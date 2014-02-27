@@ -1,0 +1,86 @@
+#countrydivcontainer{
+    width:100%;
+    height:auto; 
+    margin-bottom: 1em; 
+    font-size: 13px;
+}
+.shadetabs
+{
+/*	padding: 3px 0;
+	margin-left: 0;
+	margin-top: 1px;
+	margin-bottom: 3px;
+	list-style-type: none;
+	text-align: left; set to left, center, or right to align the menu as desired
+        */
+          clear: left;
+    position: relative;
+    width: 175px;
+    text-align: left;
+}
+
+
+.shadetabs li{
+/*display: block;
+margin: 0;*/
+/*    border: 1px solid #9A9A9A;
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 0;*/
+
+list-style-type: none;
+
+}
+
+.shadetabs li a{
+/*text-decoration: none;
+position: relative;
+z-index: 1;
+padding: 6px 20px;
+margin-right: 0px;
+border: 1px solid #FBFBFB;
+color: #79A8D9;
+background: white url(shade.gif) top left repeat-x;
+background-color: #FBFBFB;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;*/
+
+/*   background: url("bulletlist.gif") no-repeat scroll 3px center #F2F2F2;*/
+   border-right: 1px solid #DDD8CE;
+    color: #D6C8BD;
+    display: block;
+   
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+    width: auto;
+}
+
+.shadetabs li a:visited{
+
+}
+
+.shadetabs li a:hover{
+color: #715241;
+}
+
+
+.shadetabs li a.selected{ /*selected main tab style */
+/*background-image: url(shadeactive.gif);*/
+background-image: none;
+border-top-left-radius: 4px;
+border-bottom-left-radius: 4px;
+border-top: 1px solid #DDD8CE;
+border-bottom: 1px solid #DDD8CE;
+border-right: none;
+border-left: 1px solid #DDD8CE;
+position: relative;
+top: 0px;
+color: #715241;
+font-weight: bold;
+}
+
+.shadetabs li a.selected:hover{ /*selected main tab style */
+text-decoration: none;
+}
+
+

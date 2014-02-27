@@ -1,0 +1,27 @@
+
+textarea{
+    color: #222222;
+    border: 1px solid #CCCDCF;
+    padding: 2px 10px;
+    border-radius: 3px; 
+}
+input[type=text],input[type=number]{
+    width: 200px;
+    color: #222222;
+    border: 1px solid #CCCDCF;
+    padding: 2px 10px;
+    border-radius: 3px;
+}
+
+input[type=submit]{
+    border: medium none;
+    background-color: #D6C8BD;
+    color: #fff;
+    border-radius: 3px;
+    padding: 3px 8px;
+    
+}
+input[type=submit]:hover{
+    background-color: #715241;
+    color: #fbf5f3;
+}

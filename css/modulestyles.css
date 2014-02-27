@@ -1,0 +1,137 @@
+
+.menudiv{
+    display: block;
+    margin:0px;
+    text-align: center;
+    width: 100%;
+    height:auto;
+    text-align:left;
+}
+
+.right-menudiv{
+    float:right;
+    
+}
+
+.admin-container{
+    height: auto; 
+    width: 750px;
+}
+
+.HeadDiv {
+/*    float: left;*/
+    width:750px;
+    text-align: center;
+    clear:left; 
+    margin: 0px;
+    font-size:22px;
+    text-indent:20px;
+    padding-top:5px;
+    padding-bottom:5px;
+/*    border: 1px #d5ebfb solid;
+    border-radius: 4px;*/
+
+}
+.ContentHead
+{
+    width:750px;
+    height:40px;
+    padding:0px;
+    font-size:22px;
+    margin: 0px;
+    text-align:left;
+    vertical-align:middle;
+    padding-top:5px;
+    clear:left;
+    color: #2489C5;
+   font-weight: bold;
+}
+.ContentDiv {
+    float: left;
+    width:750px;
+/*    background: #f0f9ff;  Old browsers 
+    background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);  FF3.6+ 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f9ff), color-stop(47%,#cbebff), color-stop(100%,#a1dbff));  Chrome,Safari4+ 
+    background: -webkit-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);  Chrome10+,Safari5.1+ 
+    background: -o-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);  Opera 11.10+ 
+    background: -ms-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);  IE10+ 
+    background: linear-gradient(to bottom, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);  W3C 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 );  IE6-9 
+     border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    */
+    clear:left;
+   
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 400px;
+}
+
+
+
+
+.divLeftContainer
+{
+    width: auto; 
+    float: left; 
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.divRightContainer
+{  
+    width: auto; 
+    float: right;
+    margin-right: 30;
+    text-align: left;
+}
+.divEqualColumn{
+    width: 50%;
+    float: left;
+}
+.divMajorColumn{
+    width: 75%;
+    float: left;
+}
+.divMinorColumn{
+    width: 25%;
+    float: left;
+}
+.contentRow{
+    width: 100%;
+    height: auto;
+    padding-left: 20px;
+}
+.contentLabel
+{
+    float: left;
+    width: 200px;
+    text-align: right;
+    padding-right: 20px;
+}
+.contentControl
+{
+    float: left;
+    width: auto;
+    display: inline-table;
+}
+.contentBreak
+{
+    clear: both;
+    height: 20px;
+}
+.datatypecontentBreak
+{
+    clear: both;
+    height: 5px;
+}
+.ContentSpace
+{
+    clear: both;
+    width: 100%;
+    height: 20px;
+}
+
+.error_message{color:#FF0000}
+.success_message{color:#008000}

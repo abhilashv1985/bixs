@@ -1,0 +1,210 @@
+/* 
+    Document   : pagelayouts
+    Created on : 29/09/2013, 00:22:33
+    Author     : Aarav
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* Start  - Top Banner Style */
+
+.topBanner {
+    padding: 0px;
+    margin: 10px auto 0px auto;
+    height: 70px;
+    vertical-align: middle;
+    width: 100%;
+    float: left;
+    display: inline;
+}
+.topBanner .logoText{
+    font-size: 30px;
+    height: auto;
+    width: 180px;
+    position: relative;
+    float: left;
+    text-align: left;
+}
+
+/* End  - Top Banner Style */
+body{
+    width:100%; 
+    padding:0px; 
+    margin:0px; 
+    font-family: Helvetica, sans-serif;
+    color: #715241;
+    background: rgb(246,241,232);
+    background: -moz-radial-gradient(center, ellipse cover,  #fbf5f3 49%, #d6c8bd 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(49%,#fbf5f3), color-stop(100%,#d6c8bd));
+    background: -webkit-radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    background: radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbf5f3', endColorstr='#d6c8bd',GradientType=1 );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
+.main{
+    width:100%;
+    height:auto;
+    padding:0px; 
+    margin:0px;
+
+}
+
+.maincontent{
+    width:980px; 
+    height:100%;
+}
+/* Start  -  New Module layout */
+.pageContent{
+    border-radius: 5px;
+    min-height: 400px;
+    padding: 20px;
+    width: auto;
+    border: 1px solid #D6C8BD;
+}
+.pageRow{
+    font-weight: bolder;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.5em;
+    padding-bottom: 20px;
+    height: auto;
+    padding: 10px;
+}
+.sectionHeading{
+    font-weight: bolder;
+    width: auto;
+    height: auto;
+    vertical-align: bottom;
+    text-align: left;
+    padding: 0px;
+    border-bottom: 1px #D6C8BD solid;
+    clear: both;
+    padding-top: 20px;
+
+}
+/* End  -  New Module layout */
+
+
+.contentRow{
+    min-width: 400px;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    float: left;
+}
+.contentLabel
+{
+    float: left;
+    width: 150px;
+    text-align: right;
+    padding-right: 20px;
+}
+.contentControl
+{
+    float: left;
+    width: auto;
+    display: inline-table;
+}
+.contentBreak
+{
+    clear: both;
+    height: 20px;
+}
+.ContentSpace
+{
+    clear: both;
+    width: auto;
+    height: 20px;
+}
+
+/* Start  -  Flash Message layout  */
+.error_message{color:#FF0000}
+.success_message{color:#008000}
+
+/* End  -  Flash Message layout  */
+
+
+/* Start  -  small box Layout */
+
+.infoBlock{
+    width: 440px;
+    float: left;
+    height: auto;
+    background: transparent;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px #ccc;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    color: #333;
+}
+.infoBlockHead{
+    height: 30px;
+    background-color: #fbf5f3;
+    padding: 0px;
+    padding-top: 4px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #222;
+}
+.infoBlockContent{
+    padding: 10px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #ffffff;
+    text-align: justify;
+    line-height: 25px;
+}
+
+/* End  -   small box Layout */
+
+
+/* Start  -  Admin Panel Div Layout */
+.content-container{
+    height: auto; 
+    width: 1080px;
+}
+.bindPanels{
+    width: auto;
+    height: auto;
+}
+.adminBlock{
+    width: 300px;
+    float: left;
+    height: 400px;
+    background: transparent;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #DDDDDD;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    color: #333;
+}
+.adminBlockHead{
+    height: 30px;
+    background-color: #45A8DF;
+    padding: 0px;
+    padding-top: 4px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #fff;
+}
+.adminBlockContent{
+    background-color: #333;
+    padding: 10px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #ffffff;
+    text-align: justify;
+    line-height: 25px;
+}
+
+/* End  -   Admin Panel Div Layout */
+

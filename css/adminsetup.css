@@ -1,0 +1,19 @@
+
+
+.pageLeft {
+	width: auto;
+	height: 100%;
+	display: block;
+	float: left;
+        padding-top: 50px;
+}
+.pageRight {
+    padding-left: 30px;
+    padding-top: 30px;
+	width: 750px;
+	height: 100%;
+	display: block;
+	color: #222222;
+	float: left;
+}
+

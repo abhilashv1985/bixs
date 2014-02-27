@@ -1,0 +1,92 @@
+
+body{
+     width:100%; 
+    padding:0px; 
+    margin:0px; 
+    font-family: Helvetica, sans-serif;
+    color: #715241;
+    background: rgb(246,241,232);
+    background: -moz-radial-gradient(center, ellipse cover,  #fbf5f3 49%, #d6c8bd 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(49%,#fbf5f3), color-stop(100%,#d6c8bd));
+    background: -webkit-radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    background: radial-gradient(center, ellipse cover,  #fbf5f3 49%,#d6c8bd 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbf5f3', endColorstr='#d6c8bd',GradientType=1 );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main{
+    width:100%;
+    height:auto;
+    padding:0px; 
+    margin:0px;
+}
+
+.maincontent{
+    width:1000px;
+    height:auto;
+    margin: 0px;
+}
+
+
+.topBar{
+    background: #D6C8BD;
+    color: #fff;
+     width:100%;
+    height: 70px;
+    vertical-align: middle;
+}
+
+
+.topBar .maincontent  #logo{float: left; font-size: 40px; color: #f9f9f9; margin: 0px; padding-top: 10px;}
+
+.topBar .maincontent #login{ float: right; width: 600px; color: #fff;padding-top:20px;}
+
+.clearclass{clear: both;padding: 0px;margin: 0px;}
+
+.spaceclass{clear: both;padding: 0px;margin: 0px; height: 70px}
+
+
+
+#btnAuthenticate, #btnRegister {
+    background-color: #715241;
+    border: 2px solid #eee;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 1px 8px;
+    text-align: center;
+    width: auto;
+}
+#takeTour{
+     background-color: #715241;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 5px 15px;
+    text-align: center;
+    width: auto;
+    font-size: 30px;
+    text-decoration: none;
+}
+.fullRow{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.leftpanel{height: 300px;float: left;width: auto; max-width: 600px;padding-left: 0px; text-align: left}
+
+.leftpanel h2{ color:#222222}
+
+.rightpanel{ height: 300px;float: right; border-left: 1px solid #eee;width: 300px; padding-left: 50px;}
+
+.rightpanel input, select, button{
+    width: 200px;
+    float: left;
+    padding: 4px;
+}
+
+
+
