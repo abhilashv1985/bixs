@@ -18,12 +18,14 @@ class user extends CI_Controller {
         $this->load->model('user_model');
         $this->load->helper('form');
         $this->load->library('session');
-        $data['load_css'] = array("modulestyles.css", "colorbox.css", "editmodule.css", "controlstyles.css");
+        $data['load_css'] = array("modulestyles.css", "colorbox.css", "editmodule.css", "controlstyles.css", "user.css");
         $data['load_js'] = array("jquery-1.9.1.js", "jquery.colorbox.js", "datatype.js", "editModule.js", "jquery-ui.js", "user.js");
     }
 
     public function showUsers() {
-        $this->load->view('user/user');
+        // get user details to list.
+        $data["user_details"] = $this->user_model->getAllUser();
+        $this->load->view('user/user', $data);
     }
 
     public function showAddUserPage() {
@@ -35,19 +37,19 @@ class user extends CI_Controller {
             }
             $txtFirstName = $this->input->post('txtFirstName');
             if(!trim($txtFirstName) ){
-                die("Please enter company");
+                die("Please enter First name");
             }
             $txtEmail = $this->input->post('txtEmail');
             if(!trim($txtEmail) ){
-                die("Please enter company");
+                die("Please enter Email");
             }
             $txtRole = $this->input->post('txtRole');
             if(!trim($txtRole) ){
-                die("Please enter company");
+                die("Please enter Role");
             }
             $txtProfile = $this->input->post('txtProfile');
             if(!trim($txtProfile) ){
-                die("Please enter company");
+                die("Please enter Profile");
             }
             
             $data = array(
