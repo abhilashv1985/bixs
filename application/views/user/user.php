@@ -33,7 +33,7 @@
                     <div class="body-tab"><?php echo $list->email; ?></div>
                     <div class="body-tab"><?php echo $list->role; ?></div>
                     <div class="body-tab"><a href="#" onclick="javascript:editUser(<?php echo $list->id;?>)"><img src="<?php echo base_url() ?>images/edit.gif" /></a></div>
-                    <div class="body-tab"><a href="#" ><img src="<?php echo base_url() ?>images/delete.gif" /></a></div>
+                    <div class="body-tab"><a href="#" onclick="javascript:deleteUser(<?php echo $list->id;?>)"><img src="<?php echo base_url() ?>images/delete.gif" /></a></div>
 
                 </div>
                 <div class="clear_both"></div>

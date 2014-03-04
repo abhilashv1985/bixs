@@ -32,26 +32,26 @@ class user extends CI_Controller {
         if ($_POST) {
             // validation
             $txtCompany = $this->input->post('txtCompany');
-            if(!trim($txtCompany) ){
+            if (!trim($txtCompany)) {
                 die("Please enter company");
             }
             $txtFirstName = $this->input->post('txtFirstName');
-            if(!trim($txtFirstName) ){
+            if (!trim($txtFirstName)) {
                 die("Please enter First name");
             }
             $txtEmail = $this->input->post('txtEmail');
-            if(!trim($txtEmail) ){
+            if (!trim($txtEmail)) {
                 die("Please enter Email");
             }
             $txtRole = $this->input->post('txtRole');
-            if(!trim($txtRole) ){
+            if (!trim($txtRole)) {
                 die("Please enter Role");
             }
             $txtProfile = $this->input->post('txtProfile');
-            if(!trim($txtProfile) ){
+            if (!trim($txtProfile)) {
                 die("Please enter Profile");
             }
-            
+
             $data = array(
                 'organization' => $this->input->post('txtCompany'),
                 'first_name' => $this->input->post('txtFirstName'),
@@ -60,18 +60,69 @@ class user extends CI_Controller {
                 'role' => $this->input->post('txtRole'),
                 'profile' => $this->input->post('txtProfile')
             );
-            
+
             $id = $this->user_model->insertUser($data);
-            print_r($id);
-            if($id){
-                die(1);
+            //print_r($id);
+            if ($id) {
+                die("1");
+            } else {
+                die("0");
             }
-            else{
-                die(0);
-            }
-            
         }
         $this->load->view('user/adduser');
+    }
+
+    public function disableUser() {
+        $userid = $this->input->post('userid');
+        $success = $this->user_model->disableUser($userid);
+        die($success);
+    }
+
+    public function showEditUserPage() {
+        $formsubmit = $this->input->post('formsubmit');
+        $userid = $this->input->post('userid');
+        if ($_POST && $formsubmit == 1) {
+            // validation
+            $txtCompany = $this->input->post('txtCompany');
+            if (!trim($txtCompany)) {
+                die("Please enter company");
+            }
+            $txtFirstName = $this->input->post('txtFirstName');
+            if (!trim($txtFirstName)) {
+                die("Please enter First name");
+            }
+            $txtEmail = $this->input->post('txtEmail');
+            if (!trim($txtEmail)) {
+                die("Please enter Email");
+            }
+            $txtRole = $this->input->post('txtRole');
+            if (!trim($txtRole)) {
+                die("Please enter Role");
+            }
+            $txtProfile = $this->input->post('txtProfile');
+            if (!trim($txtProfile)) {
+                die("Please enter Profile");
+            }
+
+            $data = array(
+                'organization' => $this->input->post('txtCompany'),
+                'first_name' => $this->input->post('txtFirstName'),
+                'last_name' => $this->input->post('txtLastName'),
+                'email' => $this->input->post('txtEmail'),
+                'role' => $this->input->post('txtRole'),
+                'profile' => $this->input->post('txtProfile')
+            );
+
+            $id = $this->user_model->updateUser($data, $userid);
+            //print_r($id);
+            if ($id) {
+                die("1");
+            } else {
+                die("0");
+            }
+        }
+        $data['user'] = $this->user_model->getUserDetail($userid);
+        $this->load->view('user/edituser', $data);
     }
 
 }
