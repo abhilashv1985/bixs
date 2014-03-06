@@ -1,11 +1,7 @@
 
-
-
 <div class="admin-container">
     <?php $this->load->view('template/messageTemplate'); ?>
-
     <div class="ContentSpace"></div>
-
     <?php echo form_open('') ?>
 
     <div class="ContentHead">Add User </div>
@@ -30,6 +26,11 @@
                 <input type="text" id="txtEmail" name="txtEmail" required />
             </div>
             <div class="contentBreak"></div>
+            <div class="contentLabel">Password :</div>
+            <div class="contentControl"> 
+                <input type="text" id="txtPassword" name="txtPassword" required />
+            </div>
+            <div class="contentBreak"></div>
             <div class="contentLabel">Role :</div>
             <div class="contentControl"> 
                 <input type="text" id="txtRole" name="txtRole" required />
@@ -43,7 +44,7 @@
 
             <div class="contentLabel">&nbsp;</div>
             <div class="contentControl">
-                <input type='button' value='Save' id="btn_AddUser" name="btn_AddUser" /></div>
+                <input type='submit' value='Save' id="btn_AddUser" name="btn_AddUser" /></div>
             <div class="contentBreak"></div>
 
         <div class="contentBreak"></div>
@@ -51,5 +52,5 @@
     </div>
 
     <div class="ContentSpace"></div>
-</form>
-</div>
+$string = "</div>";
+echo form_close($string);

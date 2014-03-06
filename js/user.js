@@ -19,8 +19,8 @@ $(document).on('click', '#addUser', function(e) {
     });
 });
 
-$(document).on('click', '#btn_AddUser', function(e) {
-    e.preventDefault();
+$(document).on('click', '#btn_AddUser1', function(e) {
+    e.preventDefault();txtPassword
     var txtCompany = $('#txtCompany').val();
     var txtFirstName = $('#txtFirstName').val();
     var txtLastName = $('#txtLastName').val();
@@ -43,6 +43,7 @@ $(document).on('click', '#btn_AddUser', function(e) {
         success: function(res) {
             if (res == 1) {
                 alert("successfully upated");
+                
             }
             else if (res == 0) {
                 alert("sme error has ocurred. Try again.");

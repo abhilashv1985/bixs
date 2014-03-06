@@ -1,6 +1,4 @@
 
-
-
 <div class="admin-container">
     <?php $this->load->view('template/messageTemplate'); ?>
 

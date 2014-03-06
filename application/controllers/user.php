@@ -18,6 +18,8 @@ class user extends CI_Controller {
         $this->load->model('user_model');
         $this->load->helper('form');
         $this->load->library('session');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $data['load_css'] = array("modulestyles.css", "colorbox.css", "editmodule.css", "controlstyles.css", "user.css");
         $data['load_js'] = array("jquery-1.9.1.js", "jquery.colorbox.js", "datatype.js", "editModule.js", "jquery-ui.js", "user.js");
     }
@@ -31,43 +33,36 @@ class user extends CI_Controller {
     public function showAddUserPage() {
         if ($_POST) {
             // validation
+            $this->form_validation->set_rules('txtCompany', 'Company name', 'trim|required');
+            $this->form_validation->set_rules('txtFirstName', 'Name', 'trim|required');
+            $this->form_validation->set_rules('txtEmail', 'Email', 'trim|required|valid_email');
+            $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required');
+            if ($this->form_validation->run() === FALSE) {
+                $this->session->set_flashdata('message', validation_errors());
+                $this->session->set_flashdata('msg_class', 'error_message');
+                redirect('user/adduser');
+            }
+            
             $txtCompany = $this->input->post('txtCompany');
-            if (!trim($txtCompany)) {
-                die("Please enter company");
-            }
             $txtFirstName = $this->input->post('txtFirstName');
-            if (!trim($txtFirstName)) {
-                die("Please enter First name");
-            }
             $txtEmail = $this->input->post('txtEmail');
-            if (!trim($txtEmail)) {
-                die("Please enter Email");
-            }
+            $txtPassword = $this->input->post('txtPassword');
             $txtRole = $this->input->post('txtRole');
-            if (!trim($txtRole)) {
-                die("Please enter Role");
-            }
             $txtProfile = $this->input->post('txtProfile');
-            if (!trim($txtProfile)) {
-                die("Please enter Profile");
-            }
-
+ 
             $data = array(
-                'organization' => $this->input->post('txtCompany'),
-                'first_name' => $this->input->post('txtFirstName'),
+                'organization' => $txtCompany,
+                'first_name' => $txtFirstName,
                 'last_name' => $this->input->post('txtLastName'),
-                'email' => $this->input->post('txtEmail'),
-                'role' => $this->input->post('txtRole'),
-                'profile' => $this->input->post('txtProfile')
+                'email' => $txtEmail,
+                'password' => md5($txtPassword),
+                'role' => $txtRole,
+                'profile' => $txtProfile,
+                'status' => 1
             );
-
             $id = $this->user_model->insertUser($data);
             //print_r($id);
-            if ($id) {
-                die("1");
-            } else {
-                die("0");
-            }
+            redirect('user/adduser');
         }
         $this->load->view('user/adduser');
     }

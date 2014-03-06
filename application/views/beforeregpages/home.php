@@ -28,7 +28,8 @@ and open the template in the editor.
                     <div id="login">
 <?php echo form_open('admin/index') ?>
                         <input type="text" name="txtUserName" value="" size="20" placeholder="User Name" /> &nbsp;&nbsp;&nbsp;
-                        <input type="password" name="txtPassword" value="" size="20" placeholder="Password" /> &nbsp;&nbsp;&nbsp; <input id="btnAuthenticate" type="submit" value="Login" name="btnAuthenticate" />
+                        <input type="password" name="txtPassword" value="" size="20" placeholder="Password" /> &nbsp;&nbsp;&nbsp; 
+                        <input id="btnAuthenticate" type="submit" value="Login" name="btnAuthenticate" />
 
                         </form>
                     </div>

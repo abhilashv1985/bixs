@@ -1,3 +1,7 @@
 Added on date b niju
 ===============
+06-03-2014 : by Niju :
+query : ALTER TABLE `user` ADD `password` VARCHAR( 500 ) NOT NULL AFTER `email` ;
+=================================================================================
+
 
