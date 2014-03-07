@@ -111,7 +111,7 @@ class module_model extends CI_Model {
                         FROM module_metadata_section mmsec
                         JOIN module_metadata_field mmfield ON mmfield.section_id = mmsec.id
                         WHERE mmsec.moduleid =$moduleid
-                        ORDER BY mmsec.sort_order ASC ";
+                        ORDER BY mmsec.sort_order ASC, meta_fieldsort_order ASC ";
         $resultset = $this->db->query($sqlquery);
         return $resultset->result();
     }
@@ -143,7 +143,12 @@ class module_model extends CI_Model {
     public function insertLookUpData($data) {
         $this->db->insert('look_up', $data);
     }
-
+    
+    public function updateFieldPosition($fieldId, $order){
+        $data = array(
+                       'sort_order' => $order
+                    );
+        $this->db->where('id', $fieldId);
+        $this->db->update('module_metadata_field', $data);         
+    }
 }
-
-?>
