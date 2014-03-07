@@ -42,12 +42,11 @@ class module extends CI_Controller {
     }
 
     public function updateFieldPosition() {
-
-        if ($_POST['item']) {
-            $i = 0;
-            foreach ($_POST['item'] as $value) {
-
-                $i++;
+        if($_POST){
+            $pos  = 1;
+            foreach($_POST as $fieldId => $order){
+                $this->module_model->updateFieldPosition($fieldId, $pos);
+                $pos++;
             }
         }
     }
