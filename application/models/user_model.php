@@ -17,6 +17,17 @@ class user_model extends CI_Model{
         $this->load->helper('date');
     }
     
+    public function authenticateLogin($txtlogin, $txtPass){
+        $this->db->select('*');
+        $this->db->from('user');
+        //$this->db->where(array('email' => $txtlogin, 'password' => $txtPass));
+        $this->db->where('email', $txtlogin);
+        $this->db->where('password', $txtPass);
+        $this->db->where('status', 1); 
+        $resultset = $this->db->get();
+        return $resultset->row();        
+    }
+
     public function insertUser($data){
         $this->db->insert('user', $data);
         return $this->db->insert_id();

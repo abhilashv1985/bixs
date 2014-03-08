@@ -52,5 +52,7 @@
     </div>
 
     <div class="ContentSpace"></div>
+    <?php
 $string = "</div>";
 echo form_close($string);
+?>

@@ -24,14 +24,15 @@ and open the template in the editor.
 
                 <div class="maincontent" align="center">
                     <div id="logo">BIXS CRM</div>
-
+                    
                     <div id="login">
-<?php echo form_open('admin/index') ?>
-                        <input type="text" name="txtUserName" value="" size="20" placeholder="User Name" /> &nbsp;&nbsp;&nbsp;
-                        <input type="password" name="txtPassword" value="" size="20" placeholder="Password" /> &nbsp;&nbsp;&nbsp; 
-                        <input id="btnAuthenticate" type="submit" value="Login" name="btnAuthenticate" />
-
-                        </form>
+                        <?php echo form_open('') ?>
+                        <input type="text" name="txtlogin" id="txtlogin" value="" size="20" placeholder="User Name" /> &nbsp;&nbsp;&nbsp;
+                        <input type="password" name="txtPass" id="txtPass" value="" size="20" placeholder="Password" /> &nbsp;&nbsp;&nbsp; 
+                        <input id="btnAuthenticate" name="btnAuthenticate" type="button" value="Login" />
+                        <div class="clearclass"></div><br>
+                        <div id="errorinfotab "></div>
+                        <?php echo form_close() ?>
                     </div>
                     <div class="clearclass"></div>
                 </div>

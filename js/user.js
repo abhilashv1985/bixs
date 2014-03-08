@@ -1,3 +1,39 @@
+
+
+$(document).on('click', '#btnAuthenticate', function(e) {
+    e.preventDefault();
+    var txtlogin = $('#txtlogin').val();
+    var txtPass = $('#txtPass').val();
+
+    if (txtlogin.trim() == "") {
+        var msg = "Please enter emailid";
+        //$(".errorinfotab").html(msg);
+        alert(msg);
+        return;
+    }
+    if (txtPass.trim() == "") {
+        var msg = "Please enter Password";
+        //$(".errorinfotab").html(msg);
+        alert(msg);
+        return;
+    }
+    // $.md5(pass);
+    $.ajax({
+        type: "POST",
+        url: base_url + "user/authenticateLogin",
+        data: {txtlogin: txtlogin, txtPass: txtPass},
+        success: function(res) {
+            if (res == 1) {
+                // success
+                window.location.href= base_url+"admin/index";
+            } else {
+                // alert the error
+                alert("Äuthentication failed");
+            }
+        }
+    });
+});
+
 $(document).on('click', '#addUser', function(e) {
     e.preventDefault();
     $('#moduleMenu a').removeClass('selected');
@@ -20,7 +56,8 @@ $(document).on('click', '#addUser', function(e) {
 });
 
 $(document).on('click', '#btn_AddUser1', function(e) {
-    e.preventDefault();txtPassword
+    e.preventDefault();
+    txtPassword
     var txtCompany = $('#txtCompany').val();
     var txtFirstName = $('#txtFirstName').val();
     var txtLastName = $('#txtLastName').val();
@@ -43,7 +80,7 @@ $(document).on('click', '#btn_AddUser1', function(e) {
         success: function(res) {
             if (res == 1) {
                 alert("successfully upated");
-                
+
             }
             else if (res == 0) {
                 alert("sme error has ocurred. Try again.");
@@ -76,7 +113,7 @@ $(document).on('click', '#btn_editUser', function(e) {
             txtEmail: txtEmail,
             txtRole: txtRole,
             txtProfile: txtProfile,
-            status: 1, 
+            status: 1,
             formsubmit: 1
         },
         success: function(res) {
@@ -99,7 +136,7 @@ function editUser(userid) {
     $.ajax({
         type: "POST",
         url: base_url + "user/showEditUserPage",
-        data: {userid : userid, formsubmit : 0},
+        data: {userid: userid, formsubmit: 0},
         success: function(res) {
             if (res) {
 // success

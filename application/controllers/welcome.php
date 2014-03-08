@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
     public function index() {
         $this->load->helper('form');
         $this->genContents['load_css'] = array("beforeReg.css");
+        $this->genContents['load_js'] = array("jquery-1.9.1.js", "jquery.colorbox.js", "jquery-ui.js", "user.js");
         $this->load->view('beforeregpages/home',$this->genContents);
     }
     

@@ -24,6 +24,20 @@ class user extends CI_Controller {
         $data['load_js'] = array("jquery-1.9.1.js", "jquery.colorbox.js", "datatype.js", "editModule.js", "jquery-ui.js", "user.js");
     }
 
+    public function authenticateLogin() {
+        $txtlogin = $this->input->post('txtlogin');
+        $txtPass = md5($this->input->post('txtPass'));
+        $user = $this->user_model->authenticateLogin($txtlogin, $txtPass);
+        if ($user) {
+            //create session
+            $sessionArray = array('name' => @$user->first_name, 'email' => @$user->email, 'userId' => @$user->id, 'userrole' => @$user->role);
+            $this->session->set_userdata($sessionArray);
+            die("1");
+        } else {
+            die("0");
+        }
+    }
+
     public function showUsers() {
         // get user details to list.
         $data["user_details"] = $this->user_model->getAllUser();
@@ -35,21 +49,21 @@ class user extends CI_Controller {
             // validation
             $this->form_validation->set_rules('txtCompany', 'Company name', 'trim|required');
             $this->form_validation->set_rules('txtFirstName', 'Name', 'trim|required');
-            $this->form_validation->set_rules('txtEmail', 'Email', 'trim|required|valid_email');
+            $this->form_validation->set_rules('txtEmail', 'Email', 'trim|required|valid_email|is_unique[user.email]');
             $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required');
             if ($this->form_validation->run() === FALSE) {
                 $this->session->set_flashdata('message', validation_errors());
                 $this->session->set_flashdata('msg_class', 'error_message');
-                redirect('user/adduser');
+                $this->load->view('user/adduser');
             }
-            
+
             $txtCompany = $this->input->post('txtCompany');
             $txtFirstName = $this->input->post('txtFirstName');
             $txtEmail = $this->input->post('txtEmail');
             $txtPassword = $this->input->post('txtPassword');
             $txtRole = $this->input->post('txtRole');
             $txtProfile = $this->input->post('txtProfile');
- 
+
             $data = array(
                 'organization' => $txtCompany,
                 'first_name' => $txtFirstName,
@@ -62,7 +76,7 @@ class user extends CI_Controller {
             );
             $id = $this->user_model->insertUser($data);
             //print_r($id);
-            redirect('user/adduser');
+            $this->load->view('user/adduser');
         }
         $this->load->view('user/adduser');
     }
