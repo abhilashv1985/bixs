@@ -25,7 +25,7 @@ $(document).on('click', '#btnAuthenticate', function(e) {
         success: function(res) {
             if (res == 1) {
                 // success
-                window.location.href= base_url+"admin/index";
+                window.location.href = base_url + "admin/index";
             } else {
                 // alert the error
                 alert("Äuthentication failed");
@@ -38,10 +38,12 @@ $(document).on('click', '#addUser', function(e) {
     e.preventDefault();
     $('#moduleMenu a').removeClass('selected');
     $(this).addClass('selected');
+    var formSubmit = 0;
+    
     $.ajax({
         type: "POST",
         url: base_url + "user/showAddUserPage",
-        data: {},
+        data: {formSubmit: formSubmit},
         success: function(res) {
             if (res) {
                 // success
@@ -55,15 +57,58 @@ $(document).on('click', '#addUser', function(e) {
     });
 });
 
-$(document).on('click', '#btn_AddUser1', function(e) {
+$(document).on('click', '#btn_AddUser', function(e) {
     e.preventDefault();
-    txtPassword
+    
+    var formSubmit = 1;
     var txtCompany = $('#txtCompany').val();
     var txtFirstName = $('#txtFirstName').val();
     var txtLastName = $('#txtLastName').val();
     var txtEmail = $('#txtEmail').val();
+    var txtPassword = $('#txtPassword').val();
     var txtRole = $('#txtRole').val();
-    var txtProfile = $('#txtProfile').val();
+    var ddwnProfile = $('#ddwnProfile').val();
+    //alert(ddwnProfile); die;
+
+    if (txtCompany.trim() == "") {
+        var msg = "Please enter Company name";
+        //$(".errorinfotab").html(msg);
+        alert(msg);
+        return false;
+    }
+    if (txtFirstName.trim() == "") {
+        var msg = "Please enter First name";
+        //$(".errorinfotab").html(msg);
+        alert(msg);
+        return false;
+    }
+    if (txtEmail.trim() == "") {
+        var msg = "Please enter Email";
+        //$(".errorinfotab").html(msg);
+        alert(msg);
+        return false;
+    }
+    var atpos = txtEmail.indexOf("@");
+    var dotpos = txtEmail.lastIndexOf(".");
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= txtEmail.length)
+    {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+    
+    if (txtPassword.trim() == "") {
+        var msg = "Please enter Password";
+        //$(".errorinfotab").html(msg);
+        alert(msg);
+        return false;
+    }
+
+    if (txtRole.trim() == "") {
+        var msg = "Please enter Role";
+        //$(".errorinfotab").html(msg);
+        alert(msg);
+        return false;
+    }
 
     $.ajax({
         type: "POST",
@@ -73,9 +118,10 @@ $(document).on('click', '#btn_AddUser1', function(e) {
             txtFirstName: txtFirstName,
             txtLastName: txtLastName,
             txtEmail: txtEmail,
+            txtPassword: txtPassword,
             txtRole: txtRole,
-            txtProfile: txtProfile,
-            status: 1
+            ddwnProfile: ddwnProfile,
+            formSubmit : formSubmit
         },
         success: function(res) {
             if (res == 1) {
@@ -100,7 +146,7 @@ $(document).on('click', '#btn_editUser', function(e) {
     var txtLastName = $('#txtLastName').val();
     var txtEmail = $('#txtEmail').val();
     var txtRole = $('#txtRole').val();
-    var txtProfile = $('#txtProfile').val();
+    var ddwnProfile = $('#ddwnProfile').val();
 
     $.ajax({
         type: "POST",
@@ -112,7 +158,7 @@ $(document).on('click', '#btn_editUser', function(e) {
             txtLastName: txtLastName,
             txtEmail: txtEmail,
             txtRole: txtRole,
-            txtProfile: txtProfile,
+            ddwnProfile: ddwnProfile,
             status: 1,
             formsubmit: 1
         },

@@ -3,5 +3,8 @@ Added on date b niju
 06-03-2014 : by Niju :
 query : ALTER TABLE `user` ADD `password` VARCHAR( 500 ) NOT NULL AFTER `email` ;
 =================================================================================
+08-03-2014 : by niju :
+query : ALTER TABLE `user` CHANGE `role` `role` VARCHAR( 100 ) NOT NULL ;
+==================================================================================
 
 

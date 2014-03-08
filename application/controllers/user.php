@@ -45,25 +45,35 @@ class user extends CI_Controller {
     }
 
     public function showAddUserPage() {
-        if ($_POST) {
+
+        $formSubmit = $this->input->post('formSubmit');
+        if ($_POST && $formSubmit == 1) {
             // validation
-            $this->form_validation->set_rules('txtCompany', 'Company name', 'trim|required');
-            $this->form_validation->set_rules('txtFirstName', 'Name', 'trim|required');
-            $this->form_validation->set_rules('txtEmail', 'Email', 'trim|required|valid_email|is_unique[user.email]');
-            $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required');
-            if ($this->form_validation->run() === FALSE) {
-                $this->session->set_flashdata('message', validation_errors());
-                $this->session->set_flashdata('msg_class', 'error_message');
-                $this->load->view('user/adduser');
-            }
 
             $txtCompany = $this->input->post('txtCompany');
             $txtFirstName = $this->input->post('txtFirstName');
             $txtEmail = $this->input->post('txtEmail');
             $txtPassword = $this->input->post('txtPassword');
             $txtRole = $this->input->post('txtRole');
-            $txtProfile = $this->input->post('txtProfile');
-
+            $ddwnProfile = $this->input->post('ddwnProfile');
+            if (!trim($txtCompany)) {
+                die("Please enter company");
+            }
+            if (!trim($txtFirstName)) {
+                die("Please enter First name");
+            }
+            if (!trim($txtEmail)) {
+                die("Please enter Email");
+            }
+            if (!filter_var($txtEmail, FILTER_VALIDATE_EMAIL))
+                die("INVALID EMAIL"); 
+            
+            if (!trim($txtRole)) {
+                die("Please enter Role");
+            }
+            if (!trim($ddwnProfile)) {
+                die("Please enter Profile");
+            }
             $data = array(
                 'organization' => $txtCompany,
                 'first_name' => $txtFirstName,
@@ -71,12 +81,15 @@ class user extends CI_Controller {
                 'email' => $txtEmail,
                 'password' => md5($txtPassword),
                 'role' => $txtRole,
-                'profile' => $txtProfile,
+                'profile' => $ddwnProfile,
                 'status' => 1
             );
-            $id = $this->user_model->insertUser($data);
-            //print_r($id);
-            $this->load->view('user/adduser');
+            $id = $this->user_model->insertUser( $data);
+            if ($id) {
+                die("1");
+            } else {
+                die("0");
+            }
         }
         $this->load->view('user/adduser');
     }
@@ -108,8 +121,8 @@ class user extends CI_Controller {
             if (!trim($txtRole)) {
                 die("Please enter Role");
             }
-            $txtProfile = $this->input->post('txtProfile');
-            if (!trim($txtProfile)) {
+            $ddwnProfile = $this->input->post('ddwnProfile');
+            if (!trim($ddwnProfile)) {
                 die("Please enter Profile");
             }
 
@@ -119,7 +132,7 @@ class user extends CI_Controller {
                 'last_name' => $this->input->post('txtLastName'),
                 'email' => $this->input->post('txtEmail'),
                 'role' => $this->input->post('txtRole'),
-                'profile' => $this->input->post('txtProfile')
+                'profile' => $this->input->post('ddwnProfile')
             );
 
             $id = $this->user_model->updateUser($data, $userid);
