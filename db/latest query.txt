@@ -6,5 +6,15 @@ query : ALTER TABLE `user` ADD `password` VARCHAR( 500 ) NOT NULL AFTER `email` 
 08-03-2014 : by niju :
 query : ALTER TABLE `user` CHANGE `role` `role` VARCHAR( 100 ) NOT NULL ;
 ==================================================================================
+10-03-2014 : by niju
+query : CREATE TABLE IF NOT EXISTS `historylog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `referenceid` int(11) NOT NULL,
+  `referencetable` varchar(100) NOT NULL,
+  `operation_performed` text NOT NULL,
+  `performed_by` int(11) NOT NULL,
+  `modifiedtime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
-
+==================================================================================

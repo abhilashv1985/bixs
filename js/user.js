@@ -124,6 +124,7 @@ $(document).on('click', '#btn_AddUser', function(e) {
             formSubmit : formSubmit
         },
         success: function(res) {
+            
             if (res == 1) {
                 alert("successfully upated");
 

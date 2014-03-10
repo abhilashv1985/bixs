@@ -29,6 +29,10 @@ class user extends CI_Controller {
         $txtPass = md5($this->input->post('txtPass'));
         $user = $this->user_model->authenticateLogin($txtlogin, $txtPass);
         if ($user) {
+            //print_r("------------------------------------------");
+           // print_r($user->id);
+            //print_r($user->email);
+            //print_r($user->role);
             //create session
             $sessionArray = array('name' => @$user->first_name, 'email' => @$user->email, 'userId' => @$user->id, 'userrole' => @$user->role);
             $this->session->set_userdata($sessionArray);
@@ -39,13 +43,15 @@ class user extends CI_Controller {
     }
 
     public function showUsers() {
+        //$userid = $this->session->userdata('userId');
+
         // get user details to list.
         $data["user_details"] = $this->user_model->getAllUser();
         $this->load->view('user/user', $data);
     }
 
     public function showAddUserPage() {
-
+        $userid = $this->session->userdata('userId');
         $formSubmit = $this->input->post('formSubmit');
         if ($_POST && $formSubmit == 1) {
             // validation
@@ -66,8 +72,8 @@ class user extends CI_Controller {
                 die("Please enter Email");
             }
             if (!filter_var($txtEmail, FILTER_VALIDATE_EMAIL))
-                die("INVALID EMAIL"); 
-            
+                die("INVALID EMAIL");
+
             if (!trim($txtRole)) {
                 die("Please enter Role");
             }
@@ -84,8 +90,14 @@ class user extends CI_Controller {
                 'profile' => $ddwnProfile,
                 'status' => 1
             );
-            $id = $this->user_model->insertUser( $data);
+            //print_r($userid); die;
+            $id = $this->user_model->insertUser($data);
             if ($id) {
+                $this->load->library('history');
+                $tablename = "user";
+                $operation = "Insertion of new User";
+                //$perform_by = $userid;
+                $this->history->logActivity($id, $tablename, $operation);
                 die("1");
             } else {
                 die("0");
@@ -95,14 +107,22 @@ class user extends CI_Controller {
     }
 
     public function disableUser() {
-        $userid = $this->input->post('userid');
-        $success = $this->user_model->disableUser($userid);
+        //$userid = $this->session->userdata('userId');
+        $useracc = $this->input->post('userid');
+        $success = $this->user_model->disableUser($useracc);
+        $this->load->library('history');
+        $id = $useracc;
+        $tablename = "user";
+        $operation = "Disable User";
+        //$perform_by = $userid;
+        $this->history->logActivity($id, $tablename, $operation);
         die($success);
     }
 
     public function showEditUserPage() {
+        //$userid = $this->session->userdata('userId');
         $formsubmit = $this->input->post('formsubmit');
-        $userid = $this->input->post('userid');
+        $useracc = $this->input->post('userid');
         if ($_POST && $formsubmit == 1) {
             // validation
             $txtCompany = $this->input->post('txtCompany');
@@ -135,15 +155,21 @@ class user extends CI_Controller {
                 'profile' => $this->input->post('ddwnProfile')
             );
 
-            $id = $this->user_model->updateUser($data, $userid);
+            $success = $this->user_model->updateUser($data, $useracc);
             //print_r($id);
-            if ($id) {
+            if ($success) {
+                $id = $useracc;
+                $this->load->library('history');
+                $tablename = "user";
+                $operation = "Insertion of new User";
+                //$perform_by = $userid;
+                $this->history->logActivity($id, $tablename, $operation);
                 die("1");
             } else {
                 die("0");
             }
         }
-        $data['user'] = $this->user_model->getUserDetail($userid);
+        $data['user'] = $this->user_model->getUserDetail($useracc);
         $this->load->view('user/edituser', $data);
     }
 
