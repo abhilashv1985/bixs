@@ -8,12 +8,12 @@
     <div class="ContentDiv">
         <div class="contentLabel">Company :</div>
         <div class="contentControl"> 
-            <input type="text" id="txtCompany" name="txtCompany" required />
+            <input type="text" id="txtCompany" name="txtCompany" />
         </div>
         <div class="contentBreak"></div>
         <div class="contentLabel">First Name :</div>
         <div class="contentControl"> 
-            <input type="text" id="txtFirstName" name="txtFirstName" required />
+            <input type="text" id="txtFirstName" name="txtFirstName" />
         </div>
         <div class="contentBreak"></div>
         <div class="contentLabel">Last Name :</div>
@@ -23,17 +23,17 @@
         <div class="contentBreak"></div>
         <div class="contentLabel">Email :</div>
         <div class="contentControl"> 
-            <input type="text" id="txtEmail" name="txtEmail" required />
+            <input type="text" id="txtEmail" name="txtEmail" />
         </div>
         <div class="contentBreak"></div>
         <div class="contentLabel">Password :</div>
         <div class="contentControl"> 
-            <input type="text" id="txtPassword" name="txtPassword" required />
+            <input type="text" id="txtPassword" name="txtPassword" />
         </div>
         <div class="contentBreak"></div>
         <div class="contentLabel">Role :</div>
         <div class="contentControl"> 
-            <input type="text" id="txtRole" name="txtRole" required />
+            <input type="text" id="txtRole" name="txtRole" />
         </div>
         <div class="contentBreak"></div>
         <div class="contentLabel">Profile :</div>

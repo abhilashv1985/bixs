@@ -46,7 +46,7 @@ class module_model extends CI_Model {
         return $resultset->result();
     }
 
-    public function insertModuleSection() {
+    public function insertModuleSection($data) {
         
         $this->db->select('id');
         $this->db->from('module_metadata_section');
@@ -57,13 +57,7 @@ class module_model extends CI_Model {
         if($rowcount >0){
             return 0;
         }
-        $data = array(
-            'saas_id' => 100,
-            'moduleid' => $this->input->post('moduleidfld'),
-            'sort_order' => $this->input->post('sectioncountfld'),
-            'section_name' => $this->input->post('txtSectionName'),
-            'last_modified' => date('Y-m-d H:i:s', now())
-        );
+
         $this->db->insert('module_metadata_section', $data);
         
         return 1;
@@ -107,7 +101,8 @@ class module_model extends CI_Model {
 
     public function getModuleContent($moduleid) {
         $sqlquery = " SELECT mmsec.id, mmsec.section_name, mmsec.sort_order, 
-                        mmfield.field_name,mmfield.field_id,mmfield.field_html,mmfield.is_required, mmfield.id AS meta_fieldid, mmfield.sort_order AS meta_fieldsort_order
+                        mmfield.field_name,mmfield.field_id,mmfield.field_html,mmfield.is_required, mmfield.id AS meta_fieldid, 
+                        mmfield.sort_order AS meta_fieldsort_order, mmfield.parent_datatype_id AS datatype
                         FROM module_metadata_section mmsec
                         JOIN module_metadata_field mmfield ON mmfield.section_id = mmsec.id
                         WHERE mmsec.moduleid =$moduleid
@@ -150,5 +145,13 @@ class module_model extends CI_Model {
                     );
         $this->db->where('id', $fieldId);
         $this->db->update('module_metadata_field', $data);         
+    }
+    
+    public function getTaskInfo($userid){
+        $this->db->select('*');
+        $this->db->from('task');
+        $this->db->where('userid', $userid);
+        $query = $this->db->get();
+        return $query->result();
     }
 }

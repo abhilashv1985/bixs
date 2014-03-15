@@ -55,7 +55,6 @@ class user extends CI_Controller {
         $formSubmit = $this->input->post('formSubmit');
         if ($_POST && $formSubmit == 1) {
             // validation
-
             $txtCompany = $this->input->post('txtCompany');
             $txtFirstName = $this->input->post('txtFirstName');
             $txtEmail = $this->input->post('txtEmail');

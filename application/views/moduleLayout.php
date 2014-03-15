@@ -34,7 +34,16 @@
             <div class="contentRow">
                 <div class="contentLabel"><?php echo $content->field_name; ?></div>
                 <div class="contentControl">
-                    <?php echo $content->field_html; ?>       
+                    <?php 
+                        //echo $content->datatype;
+                        $field = $content->field_html;
+                        $newfield = $content->field_html;
+                        if($content->datatype == 7){ 
+                        //checking for datatype DATE, to append class for datepicker
+                         $newfield = str_replace("/>"," class=date />",$field);                               
+                        }
+                    ?>
+                    <?php echo $newfield; ?>       
                 </div>
             </div>
             <?php
@@ -43,7 +52,16 @@
             <div class="contentRow">
                 <div class="contentLabel"><?php echo $content->field_name; ?></div>
                 <div class="contentControl">
-                    <?php echo $content->field_html; ?>       
+                    <?php 
+                        //echo $content->datatype;
+                        $field = $content->field_html;
+                        $newfield = $content->field_html;
+                        if($content->datatype == 7){ 
+                        //checking for datatype DATE, to append class for datepicker
+                         $newfield = str_replace("/>"," class=date />",$field);                               
+                        }
+                    ?>
+                    <?php echo $newfield; ?>       
                 </div>
             </div>
             <?php

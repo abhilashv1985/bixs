@@ -42,9 +42,9 @@ class module extends CI_Controller {
     }
 
     public function updateFieldPosition() {
-        if($_POST){
-            $pos  = 1;
-            foreach($_POST as $fieldId => $order){
+        if ($_POST) {
+            $pos = 1;
+            foreach ($_POST as $fieldId => $order) {
                 $this->module_model->updateFieldPosition($fieldId, $pos);
                 $pos++;
             }
@@ -72,19 +72,26 @@ class module extends CI_Controller {
 
     public function addModuleSection() {
         $sectionName = $this->input->post('txtSectionName');
-        if((trim($sectionName) == "")){
-           die('0');
+        if ((trim($sectionName) == "")) {
+            die('0');
         }
-        $ret = $this->module_model->insertModuleSection();
-        if($ret == 0)
+        $rowcount = $this->module_model->getSectionCount($this->input->post('moduleidfld'));
+        $data = array(
+            'saas_id' => 100,
+            'moduleid' => $this->input->post('moduleidfld'),
+            'sort_order' => ++$rowcount,
+            'section_name' => $this->input->post('txtSectionName'),
+            'last_modified' => date('Y-m-d H:i:s', now())
+        );
+        $ret = $this->module_model->insertModuleSection($data);
+        if ($ret == 0)
             die('-1');
-        else if($ret == 1){
+        else if ($ret == 1) {
             die('1');
-        }
-        else{
+        } else {
             die('-2');
         }
-        
+
         //$this->editModule();
     }
 

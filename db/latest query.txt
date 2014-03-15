@@ -18,3 +18,18 @@ query : CREATE TABLE IF NOT EXISTS `historylog` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 ==================================================================================
+12-03-2014 : by niju (cleaned)
+query :
+DELETE FROM `ocrmdb`.`module` WHERE `module`.`id` = 6 LIMIT 1;
+DELETE FROM `ocrmdb`.`module` WHERE `module`.`id` = 13 LIMIT 1;
+DELETE FROM `ocrmdb`.`module` WHERE `module`.`id` = 14 LIMIT 1;
+DELETE FROM `ocrmdb`.`module` WHERE `module`.`id` = 15 LIMIT 1;
+DELETE FROM `ocrmdb`.`module` WHERE `module`.`id` = 16 LIMIT 1;
+DELETE FROM `ocrmdb`.`module` WHERE `module`.`id` = 17 LIMIT 1;
+DELETE FROM `ocrmdb`.`module` WHERE `module`.`id` = 18 LIMIT 1;
+
+DELETE FROM `ocrmdb`.`module_metadata_section` WHERE `module_metadata_section`.`id` = 15 LIMIT 1;
+DELETE FROM `ocrmdb`.`module_metadata_section` WHERE `module_metadata_section`.`id` = 16 LIMIT 1;
+
+DELETE FROM `ocrmdb`.`module_metadata_field` WHERE `module_metadata_field`.`module_id` =6
+DROP TABLE `gvh`, `junk`, `task`, `test`;

@@ -127,7 +127,12 @@ $(document).on('click', '#btn_AddUser', function(e) {
             
             if (res == 1) {
                 alert("successfully upated");
-
+                (document.getElementById('txtCompany')).value = '';
+                (document.getElementById('txtFirstName')).value = '';
+                (document.getElementById('txtLastName')).value = '';
+                (document.getElementById('txtEmail')).value = '';
+                (document.getElementById('txtPassword')).value = '';
+                (document.getElementById('txtRole')).value = '';
             }
             else if (res == 0) {
                 alert("sme error has ocurred. Try again.");

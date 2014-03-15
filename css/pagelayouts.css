@@ -161,6 +161,10 @@ body{
     background-color: #ffffff;
     text-align: justify;
     line-height: 25px;
+    /*max-height: 200px; */
+}
+.infoBlockContent ul li{
+    list-style-type:circle;
 }
 
 /* End  -   small box Layout */
