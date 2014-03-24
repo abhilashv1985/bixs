@@ -15,6 +15,7 @@
         <input type="submit" id="btnSave" value="Save"/>
         <input type="submit" id="btnSave" value="Save & New"/>
         <input type="submit" id="btnSave" value="Cancel"/>
+        <input type="button" id="btnImport" value="Import" onclick="javascript:window.location = base_url+'clientmodulemanager/export/<?php echo $moduleId; ?>'"/>
     </div>
 
     <?php
