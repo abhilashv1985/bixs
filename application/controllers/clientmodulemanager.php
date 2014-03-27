@@ -66,7 +66,8 @@ class clientmodulemanager extends CI_Controller {
                 $this->module_model->saveModuleForm($dataArray);
             }
         }
-        @$data['moduleContent'] = $this->module_model->getModuleContent($moduleId);
+        $data['moduleContent'] = $this->module_model->getModuleContent($moduleId);
+        $data['moduleId']      = $moduleId; 
         if ($data['moduleContent']) {
             $data['modulename'] = $this->module_model->getModuleName($moduleId);
             $data['lookupData'] = $this->module_model->getLookUpData($moduleId);
@@ -78,6 +79,52 @@ class clientmodulemanager extends CI_Controller {
         }
     }
 
+    public function export($moduleId){
+        $userid = $this->session->userdata('userId');
+        $this->load->library('excel');
+        if($_POST){
+            // excel file parse
+            $this->load->library('upload');
+            
+            if (!empty($_FILES['importfile']['name'])){
+                if(!is_dir("excel_import/$moduleId")){
+                    mkdir("excel_import/$moduleId", 0777,true);
+                }                
+                $config['upload_path'] = "excel_import/$moduleId";
+                $config['allowed_types'] = 'xls'; 
+                $this->upload->initialize($config);
+                
+                if ($this->upload->do_upload('importfile')){
+                    $file           = $this->upload->data();
+                    $file_name      = $file['file_name'];
+                    $filepath       = $config['upload_path'];
+                    // $filepath.'/'.$file_name; die;
+                }
+            }
+            $data['moduleContent'] = $this->module_model->getModuleContent($moduleId);
+            $data['moduleId']      = $moduleId; 
+            $data['excelFile']     = $filepath.'/'.$file_name; 
+            if ($data['moduleContent']) {
+                $data['modulename'] = $this->module_model->getModuleName($moduleId);
+                $data['lookupData'] = $this->module_model->getLookUpData($moduleId);
+                $this->load->view($this->config->item('site_page') . 'header', $this->genContents);
+                $this->load->view($this->config->item('site_page') . 'topBanner');
+                $this->load->view($this->config->item('site_page') . 'menu', $this->menuContents);
+                $this->load->view('exportModuleLayout', $data);
+                $this->load->view($this->config->item('site_page') . 'footer');                
+            }
+        }
+        
+        $data['moduleContent'] = $this->module_model->getModuleContent($moduleId);
+        $data['moduleId']      = $moduleId; 
+        if ($data['moduleContent'] && !$_POST) {
+            $data['modulename']=  $this->module_model->getModuleName($moduleId);
+            $data['lookupData']=  $this->module_model->getLookUpData($moduleId);
+            $this->load->view($this->config->item('site_page') . 'header', $this->genContents);
+            $this->load->view($this->config->item('site_page') . 'topBanner');
+            $this->load->view($this->config->item('site_page') . 'menu', $this->menuContents);
+            $this->load->view('moduleImport', $data);
+            $this->load->view($this->config->item('site_page') . 'footer');
+        }       
+    }
 }
-
-?>
