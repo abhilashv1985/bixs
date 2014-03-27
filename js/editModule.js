@@ -101,23 +101,28 @@ $(document).ready(function() {
         });
     });
 
-    $(document).on('click', '#btnsaveSection', function(e) {
-        e.preventDefault();
-        var formdata = $("#AddModuleSelectionPanel").serialize();
-        $.post(base_url + "module/addModuleSection", formdata, function(data) {
-            //alert(data);
-            if (data == 1) {
-                alert("Section Successfully created");
-                (document.getElementById('txtSectionName')).value = '';
-            }
-            else if(data == -1){
-                alert("Sorry. Section already exist..!!!");
-            }else {
-                alert("some error has ocuured..!!!");
-            }
+        $(document).on('click', '#btnsaveSection', function(e) {
+            e.preventDefault();
+            var formdata = $("#AddModuleSelectionPanel").serialize();
+            $.post(base_url + "module/addModuleSection", formdata, function(data) {
+                //alert(data);
+                if (data == 1) {
+                    alert("Section Successfully created");
+                    (document.getElementById('txtSectionName')).value = '';
+                }
+                else if(data == -1){
+                    alert("Sorry. Section already exist..!!!");
+                }else {
+                    alert("some error has ocuured..!!!");
+                }
+
+            });
+        });
+    
+        $(document).on('click', '#btnImport', function(e) {
 
         });
-    });
+    
     });
 
      // To get all the sections and fields in given module id
